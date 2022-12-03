@@ -1,10 +1,9 @@
-# Next.js Hello World
+# PTH Inventaire
 
-This repo is forked from [nextjs/examples/hello-world](https://github.com/zeit/next.js/tree/canary/examples/hello-world).
+Premiers pas pour une app de gestion d'inventaire
 
-This example shows the most basic idea behind Next. We have 2 pages: `pages/index.js` and `pages/about.js`. The former responds to `/` requests and the latter to `/about`. Using `next/link` you can add hyperlinks between them with universal routing capabilities. The `day` directory shows that you can have subdirectories.
+La chose est deployée https://pth-inventaire.onrender.com.
 
-The app in this repo is deployed at https://next-js.onrender.com.
 
 ## Deploy
 
