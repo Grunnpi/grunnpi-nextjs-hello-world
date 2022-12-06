@@ -35,39 +35,11 @@ export default function Home({ allPostsData }) {
   );
 }
 
-export async function getStaticProps() {
-  const allPostsData = getSortedPostsData()
+export async function getServerSideProps() {
+  const allPostsData = await getSortedPostsData()
   return {
     props: {
       allPostsData
     }
   }
 }
-
-//import Link from 'next/link'
-//import Head from 'next/head';
-//import Image from 'next/image'
-//
-//const Index = () => (
-//  <div>
-//    <Head>
-//        <title>PTH SGDF</title>
-//        <link rel="icon" href="/favicon.ico" />
-//    </Head>
-//    Entrée/Sortie d''inventaire.{' '}
-//    <br/>
-//    <Link href="/about">
-//      <a>About</a>
-//    </Link>
-//    <br/>
-//    <Link href="/day">
-//      <a>Day</a>
-//    </Link>
-//    <br/>
-//    <Link href="/posts/50">
-//      <a>Ligne 50 : Petit plat alu</a>
-//    </Link>
-//  </div>
-//)
-//
-//export default Index;

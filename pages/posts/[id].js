@@ -1,5 +1,5 @@
 import Layout from '/components/layout'
-import { getAllPostIds, getPostData } from '/lib/posts';
+import { getPostData } from '/lib/posts';
 import Head from 'next/head';
 import utilStyles from '../../styles/utils.module.css'
 
@@ -21,19 +21,19 @@ export default function Post({ postData }) {
   )
 }
 
-export async function getStaticPaths() {
-  console.log("getStaticPaths >>>>>>>>>>>>>")
-  const paths = getAllPostIds();
-  return {
-    paths,
-    fallback: false,
-  };
-}
+//export async function getStaticPaths() {
+//  console.log("getStaticPaths >>>>>>>>>>>>>")
+//  const paths = await getAllPostIds();
+//  return {
+//    paths,
+//    fallback: false,
+//  };
+//}
 
-export async function getStaticProps({ params }) {
+export async function getServerSideProps({ params }) {
     console.log("getStaticProps >>>>>>>>>>>>>")
     console.log(params)
-  const postData = getPostData(params.id);
+  const postData = await getPostData(params.id);
     return {
       props: {
         postData,
