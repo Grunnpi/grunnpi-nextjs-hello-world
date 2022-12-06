@@ -4,7 +4,18 @@ import Layout, { siteTitle } from '/components/layout';
 import utilStyles from '/styles/utils.module.css';
 import { getSortedPostsData } from '/lib/posts'
 
-export default function Home({ allPostsData }) {
+import useSwr from 'swr'
+import type { Inventaire } from '../interfaces'
+
+const fetcher = (url: string) => fetch(url).then((res) => res.json())
+
+export default function Home() {
+
+     const { allPostsData, error } = useSwr<Inventaire[]>('/api/inventaires', fetcher)
+
+  if (error) return <div>Failed to load inventaire</div>
+  if (!allPostsData) return <div>Loading...</div>
+
   return (
     <Layout home>
       <Head>
@@ -35,11 +46,11 @@ export default function Home({ allPostsData }) {
   );
 }
 
-export async function getServerSideProps() {
-  const allPostsData = await getSortedPostsData()
-  return {
-    props: {
-      allPostsData
-    }
-  }
-}
+//export async function getServerSideProps() {
+//  const allPostsData = await getSortedPostsData()
+//  return {
+//    props: {
+//      allPostsData
+//    }
+//  }
+//}
